@@ -1,12 +1,15 @@
 import csv
 import sys
 
-
 # allows csv file to be dropped on to file
 try:
-    droppedFile = sys.argv[1]
+    dropped_file = sys.argv[1]
 except:
-    droppedFile = "download.csv"
+    dropped_file = "download.csv"
+
+# used to name output file in format "filename markers"
+filename = dropped_file.split("\\").pop().split('.')[0]
+
 
 def get_sec(time_str) -> int:
     """returns total seconds from hour:minutes:seconds string"""
@@ -27,7 +30,7 @@ def get_hms(seconds) -> str:
 
 # get timestamp of markers
 times = []
-with open(droppedFile) as csv_file:
+with open(dropped_file) as csv_file:
     reader = csv.reader(csv_file, delimiter=',')
     for row in reader:
         # convert twitch timestamp to edl timestamp
@@ -39,7 +42,7 @@ with open(droppedFile) as csv_file:
 
 
 # open file to write to
-file = open('markers.edl', "w")
+file = open(f"{filename} markers.edl", "w")
 # write boilerplate stuff for davinci resolve edl files
 file.write("TITLE: Timeline 1\n")
 file.write("FCM: NON-DROP FRAME\n\n")
