@@ -3,3 +3,4 @@ markers.edl
 download.csv
 *.edl
 *.csv
+*.pyc
