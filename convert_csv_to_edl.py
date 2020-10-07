@@ -51,7 +51,7 @@ for index, t in enumerate(times):
     new_t = get_sec(t["timestamp"]) + 1
     new_t = get_hms(new_t)
     marker_info = f"{marker_count:03d}  001      V     C        {t['timestamp']}:00 {new_t}:00 {t['timestamp']}:00 {new_t}:00\n"
-    marker_info += f"{t['description']} |C:ResolveColorBlue |M:Marker 1 |D:1\n\n"
+    marker_info += f"{t['description']} |C:ResolveColorBlue |M:Marker {marker_count} |D:1\n\n"
     
     file.write(marker_info)
 
