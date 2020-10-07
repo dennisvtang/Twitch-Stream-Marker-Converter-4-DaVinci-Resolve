@@ -11,13 +11,13 @@ except:
 filename = dropped_file.split("\\").pop().split('.')[0]
 
 
-def get_sec(time_str) -> int:
+def get_sec(time_str: str) -> int:
     """returns total seconds from hour:minutes:seconds string"""
     h, m, s = time_str.split(':')
     return int(h) * 3600 + int(m) * 60 + int(s)
 
 
-def get_hms(seconds) -> str:
+def get_hms(seconds: int) -> str:
     """returns hour:minutes:seconds"""
     seconds = seconds % (24 * 3600) 
     hour = seconds // 3600
@@ -38,7 +38,7 @@ with open(dropped_file) as csv_file:
         t = row[0]
         t_in_secs = get_sec(t)
         t_in_secs += 3600
-        times.append(get_hms(t_in_secs))
+        times.append({"timestamp": get_hms(t_in_secs), "description": row[-1]})
 
 
 # open file to write to
@@ -48,10 +48,10 @@ file.write("TITLE: Timeline 1\n")
 file.write("FCM: NON-DROP FRAME\n\n")
 for index, t in enumerate(times):
     marker_count = index + 1
-    new_t = get_sec(t) + 1
+    new_t = get_sec(t["timestamp"]) + 1
     new_t = get_hms(new_t)
-    marker_info = f"{marker_count:03d} 001      V     C        {t}:00 {new_t}:00 {t}:00 {new_t}:00\n"
-    marker_info += " |C:ResolveColorBlue |M:Marker 1 |D:1\n\n"
+    marker_info = f"{marker_count:03d}  001      V     C        {t['timestamp']}:00 {new_t}:00 {t['timestamp']}:00 {new_t}:00\n"
+    marker_info += f"{t['description']} |C:ResolveColorBlue |M:Marker 1 |D:1\n\n"
     
     file.write(marker_info)
 
