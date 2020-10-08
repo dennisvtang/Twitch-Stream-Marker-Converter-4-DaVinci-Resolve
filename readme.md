@@ -11,7 +11,7 @@ Twitch marker importer 4 DaVinci Resolve converts twitch's csv file for stream m
 1. Download and extract compiled version or download script version
     - script version requires python 3 
 2. Drag and drop csv file onto "converter.py" or "converter.exe"
-. Import resulting edl file onto the timeline
+3. Import resulting edl file onto the timeline
 
 
 Using the compiled version
