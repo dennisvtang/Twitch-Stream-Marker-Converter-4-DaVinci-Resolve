@@ -4,7 +4,7 @@ Twitch marker importer 4 DaVinci Resolve converts twitch's csv file for stream m
 
 ## Features
 - includes description and creator of the marker in the markers created in DaVinci Resolve
-- output file will be named in the following format "input filename marker"
+- output file will be named in the following format "input filename markers"
 
 
 ## Usage
