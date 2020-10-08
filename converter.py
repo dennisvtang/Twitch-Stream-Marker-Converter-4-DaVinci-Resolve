@@ -5,6 +5,7 @@ import sys
 try:
     dropped_file = sys.argv[1]
 except:
+    # used for testing
     dropped_file = "download.csv"
 
 # used to name output file in format "filename markers"
@@ -42,7 +43,7 @@ with open(dropped_file) as csv_file:
 
 
 # open file to write to
-file = open(f"{filename} markers.edl", "w")
+file = open(f"output\{filename} markers.edl", "w")
 # write boilerplate stuff for davinci resolve edl files
 file.write("TITLE: Timeline 1\n")
 file.write("FCM: NON-DROP FRAME\n\n")
